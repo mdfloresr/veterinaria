@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "node --watch ./src/index.js",
-    "start": "node public/navbar.html"
+    "start": "node src/index.js"
   },
   "author": "",
   "license": "ISC",
