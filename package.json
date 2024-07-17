@@ -4,7 +4,8 @@
   "description": "Un proyecto de Ingeniería de software que busca implementar un software de CRM dentro de una veterinaria",
   "main": "index.js",
   "scripts": {
-    "dev": "node --watch ./src/index.js"
+    "dev": "node --watch ./src/index.js",
+    "start": "node src/index.js"
   },
   "author": "",
   "license": "ISC",
