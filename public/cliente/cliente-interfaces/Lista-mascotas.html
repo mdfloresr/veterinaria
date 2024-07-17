@@ -1,0 +1,166 @@
+<div class="flex-YX centrado Contenedor_Mascotas_cliente-general">
+    <h2 class="flex-YX centrado">LISTA DE MASCOTAS</h2>
+    <div class="Contenedor_Mascotas_cliente-lista flex-YX">
+        <div class="Descripcion_mascota_cliente-lista flex-XY font-long" style="display: none;">
+            <div class="flex-XY datos-mascota-cliente">
+                <div class="bold flex-YX centrado-end encabezado-mascota_cliente">
+                    <p>Nombre:</p>
+                    <p>Especie:</p>
+                    <p>Raza:</p>
+                    <p>Color:</p>
+                </div>
+                <div class="flex-YX encabezado-mascota_cliente">
+                    <span class="Mascota_cliente_nombre">No especificado</span>
+                    <span class="Mascota_cliente_especie">No especificado</span>
+                    <span class="Mascota_cliente_raza">No especificado</span>
+                    <span class="Mascota_cliente_color">No especificado</span>
+                </div>
+            </div>
+            <div class="flex-XY datos-mascota-cliente">
+                <div class="bold flex-YX centrado-end encabezado-mascota_cliente">
+                    <p>Nacimiento:</p>
+                    <p>Peso Actual:</p>
+                    <p>Sexo:</p>
+                </div>
+                <div class="flex-YX encabezado-mascota_cliente">
+                    <span class="Mascota_cliente_nacimiento">No especificado</span>
+                    <span class="Mascota_cliente_peso">No especificado</span>
+                    <span class="Mascota_cliente_sexo">No especificado</span>
+                </div>
+            </div>
+            <button class="btn_editarMascota-cliente bold opacidad-80 editar-mascota-btn">Editar Mascota</button>
+        </div>
+
+        <div id="Mensaje_NoHayMascotas" style="display: none;">
+            <p class="Mensaje-Vacio-cliente">Aún no ha registrado mascotas.</p>
+        </div>
+
+    </div>
+    <button id="btnAniadir-new-pet" class="boton-generico-primario">Añadir nueva Mascota</button>
+</div>
+
+<!------------------------------------------------------------------------------------------------------------
+    ------------------------------------ Modal que añadir nuevas mascotas -----------------------------------------
+    -------------------------------------------------------------------------------------------------------------->
+
+<div class="modal-generico" style="display: none;" id="Modal-aniadirNuevaMascota">
+    <div class="contenidoModal-AniadorMascota">
+        <img src="../Íconos - Logos/Equis.svg" class="equis-ubicacion" alt="">
+        <h2 class="flex-YX centrado" id="h2EditarNuevaMascota" style="margin-bottom: 20px;">AÑADIR NUEVA MASCOTA</h2>
+        <div>
+            <p class="bold">Información de la mascota</p>
+            <form action="" class="flex-YX centrado" id="Formulario_AniadirMascota">
+                <div class="form-aniadirMascota">
+                    <div class="flex-XY division-gap">
+                        <div class="flex-YX">
+                            <label for="" id="">Nombre: *</label>
+                            <input type="text" name="nombre_mascota" id="nombre_mascota-aniadorFRM" class="input-aniadirMascota"
+                                placeholder="Nombre de la mascota" maxlength="20" required>
+                        </div>
+                        <div class="flex-YX">
+                            <label for="">Fecha de Nacimiento: *</label>
+                            <input type="date" name="fecha_nacimiento" id="fechaNacimiento" min="2000-01-01" class="input-aniadirMascota" required>
+                        </div>
+                        <div class="flex-YX label-aniadirMascota">
+                            <label for="">Especie: *</label>
+                            <select name="especie" id="" class="input-aniadirMascota" required>
+                                <option value="" disabled selected>Especie</option>
+                                <option value="perro">Perro</option>
+                                <option value="gato">Gato</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flex-XY centrado division-gap">
+                        <div class="flex-YX label-aniadirMascota">
+                            <label for="">Raza:</label>
+                            <input type="text" name="raza" id="raza_mascota-aniadorFRM" class="input-aniadirMascota"
+                                placeholder="Raza (opcional)" maxlength="20">
+                        </div>
+                        <div class="flex-YX label-aniadirMascota">
+                            <label for="">Peso:</label>
+                            <input type="number" name="peso" id="" step="0.01" min="0.1" class="input-aniadirMascota"
+                                placeholder="Peso actual en KG (opcional)">
+                        </div>
+                        <div class="flex-YX label-aniadirMascota">
+                            <label for="">Color: *</label>
+                            <input type="text" name="color" id="color_mascota-aniadorFRM" class="input-aniadirMascota"
+                                placeholder="Color de la mascota" maxlength="20" required>
+                        </div>
+                    </div>
+                    <div class="flex-YX centrado">
+                        <div class="flex-YX label-aniadirMascota">
+                            <label for="" class="bold">Sexo: *</label>
+                            <select name="sexo" id="" class="input-aniadirMascota" required>
+                                <option value="" disabled selected>Sexo</option>
+                                <option value="M">Macho</option>
+                                <option value="H">Hembra</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <p style="font-size: 12px;">Si no conoce la fecha exacta en la nació su mascota puede poner el año y un
+                    mes aproximado</p>
+                <button type="submit" class="boton-generico-primario" id="btn-AgregarMascota-form">Agregar
+                    Mascota</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!------------------------------------------------------------------------------------------------------------
+    ------------------------------------ Modal para editar nuevas mascotas -----------------------------------------
+    -------------------------------------------------------------------------------------------------------------->
+
+<div class="modal-generico" id="Modal-EditarNuevaMascota" style="display: none;">
+    <div class="contenidoModal-AniadorMascota">
+        <img src="../Íconos - Logos/Equis.svg" class="equis-ubicacion" alt="">
+        <h2 class="flex-YX centrado" style="margin-bottom: 20px;">EDITAR MASCOTA EXISTENTE</h2>
+        <div>
+            <p class="bold">Información de la mascota</p>
+            <form action="" class="flex-YX centrado" id="Formulario_EditarMascota">
+                <div class="form-aniadirMascota">
+                    <div class="flex-XY division-gap">
+                        <div class="flex-YX">
+                            <label for="">Nombre: *</label>
+                            <input type="text" name="nombre_mascota" id="nombre_mascota-editarFRM" class="input-aniadirMascota editar_nombre"
+                                placeholder="Nombre de la mascota" required>
+                        </div>
+                        <div class="flex-YX">
+                            <label for="">Fecha de Nacimiento: *</label>
+                            <input type="date" name="fecha_nacimiento" id="" min="2000-01-01" class="input-aniadirMascota editar_nacimiento" required>
+                        </div>
+                        <div class="flex-YX label-aniadirMascota">
+                            <label for="">Especie: *</label>
+                            <p class="input-aniadirMascota disabled-nomodificable editar_especie">No especificado</p>
+                        </div>
+                    </div>
+                    <div class="flex-XY centrado division-gap">
+                        <div class="flex-YX label-aniadirMascota">
+                            <label for="">Raza:</label>
+                            <input type="text" name="raza" id="raza_mascota-editarFRM" class="input-aniadirMascota editar_raza"
+                                placeholder="Raza (opcional)">
+                        </div>
+                        <div class="flex-YX label-aniadirMascota">
+                            <label for="">Peso:</label>
+                            <input type="number" name="peso" id="" step="0.01" min="0.1" class="input-aniadirMascota editar_peso"
+                                placeholder="Peso actual en KG (opcional)">
+                        </div>
+                        <div class="flex-YX label-aniadirMascota">
+                            <label for="">Color: *</label>
+                            <p class="input-aniadirMascota disabled-nomodificable editar_color"></p>
+                        </div>
+                    </div>
+                    <div class="flex-YX centrado">
+                        <div class="flex-YX label-aniadirMascota">
+                            <label for="" class="bold">Sexo: *</label>
+                            <p class="input-aniadirMascota disabled-nomodificable editar_sexo"></p>
+                        </div>
+                    </div>
+                </div>
+                <p style="font-size: 12px; padding: 10px;">Solo puedes actualizar los siguientes datos: Nombre, Peso, Fecha de
+                    Nacimiento y la Raza</p>
+                <button type="submit" class="boton-generico-primario" id="btn-EditarMascota-form">Editar Mascota</button>
+            </form>
+        </div>
+    </div>
+</div>
